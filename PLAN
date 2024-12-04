@@ -5,3 +5,8 @@
 # - NFL website (Season Records)
 # - US Census (City Populations)
 # - ESPN (Stadium Attendance 2007 - current)
+#read in data, wrangle the data, tidy the data
+#create graphical representations of variables in question for exploratory data analysis
+#create regression models for each research question
+#create graphical representations of the data that support our results from regression models
+#create written report stating our final conclusions along with supplemental graphs
