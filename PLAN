@@ -1,12 +1,25 @@
 #We are exploring whether there is a relationship between nfl team success and city population
 # Research question 1: Is there a relationship between city population and regular season record
 # Research question 2: Is there a relationship between stadium attendance and regular season record
-# Collect data from related sources - 
+
+
+# Collect data from related sources - using rvest package
 # - NFL website (Season Records)
 # - US Census (City Populations)
 # - ESPN (Stadium Attendance 2007 - current)
 #read in data, wrangle the data, tidy the data
+#data in tidy format should have each case as a team in a given year and the variables will be city population and average percentage of stadium attendance for 
+#that given year.
+
+
 #create graphical representations of variables in question for exploratory data analysis
+#exploratory data will plot each team with the x-axis being the population/ % of stadium attendance and the y-axis will be the teams winning percentage.
+#We will then comment on our observations(any visible trends in the data, outliers, etc.)
+
 #create regression models for each research question
+
+
 #create graphical representations of the data that support our results from regression models
+
+
 #create written report stating our final conclusions along with supplemental graphs
