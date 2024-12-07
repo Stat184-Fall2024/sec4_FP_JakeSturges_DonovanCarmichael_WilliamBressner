@@ -7,7 +7,33 @@
 # - NFL website (Season Records)
 # - US Census (City Populations)
 # - ESPN (Stadium Attendance 2007 - current)
-#read in data, wrangle the data, tidy the data
+# Goal: Find, Tidy, Clean, Wrangle Data into usable tables
+# PLAN
+# 1) Load necessary data packages: {rvest}, {tidyverse}
+#
+# 2) Find the needed website urls for the data
+# a] US Census for city population
+# b] NFl Website for Season Records 
+# c] ESPN for stadium attendance over the last 
+#
+# 3) Create population table
+# a] Read Census data into a table using read_html function
+# b] Tidy Data so city is case with attributes of:
+#.      population and year
+# c] Clean the data to remove all n/a or 0 values
+# d] Remove all cities without an NFL team
+#
+# 4) Create NFL Win Percentage by Year Table
+# a] Read the data into a table 
+# b] Tidy the data so that each case is a Team with attributes: 
+#.      year and win percentage 
+# c] Clean any data that does not follow table guidelines
+#
+# 5) Create Average NFL Stadium Attendance by year table
+# a] Read the table into R using read_html
+# b] Tidy the table, making each case a team with attributes:
+#.      year and average stadium attendance
+# c] Clean any n/a or 0 values out of the data set
 #data in tidy format should have each case as a team in a given year and the variables will be city population and average percentage of stadium attendance for 
 #that given year.
 
