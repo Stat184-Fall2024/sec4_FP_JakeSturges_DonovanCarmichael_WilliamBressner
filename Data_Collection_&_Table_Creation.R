@@ -76,6 +76,295 @@ NFL_Yearly_Populations <- US_Populations %>%
 
 #Step 4) JAKE's got it
 
+library(rvest)
+library(tidyr)
+library(tidyverse)
+
+## the goal of this piece of code is to harvest data from espn and put together a table with each case being
+## a team in a given year from the timespan of 2010-2019 and the variable being win percentage.
+
+## this code reads the data in from the ESPN website
+
+ESPNWINPCT <- read_html(x = "https://www.espn.com/nfl/standings") %>%
+  html_elements(css = "table") %>%
+  html_table()
+
+##since the data is read in in 4 tibbles, the 1st and 3rd being the team names for their respective conferences(AFC,NFC)
+## and the 2nd and 4th being the statistics associated with each team, I combined all the AFC teams with their data and
+## the NFC teams with their data, then combined all this data with the bind_rows method.
+
+AFCWINPCT <- bind_cols(ESPNWINPCT[[1]],ESPNWINPCT[[2]])
+
+NFCWINPCT <- bind_cols(ESPNWINPCT[[3]],ESPNWINPCT[[4]])                    
+
+##after we have all the necessary data we remove all data other than team name and win percentage with the select method
+## and we get rid of filler rows by slicing only the rows with teams
+NFLWINPCT <- bind_rows(NFCWINPCT,AFCWINPCT) %>%
+  select(1,5)%>%
+  set_names("TeamName", "WinPercentage") %>%
+  slice(2,3,4,5,7,8,9,10,12,13,14,15,17,18,19,20,22,23,24,25,27,28,29,30,32,33,34,35,37,38,39,40) %>%
+  ## I separated by spaces to get all the team names in one column then i got rid of the rest of the columns so we 
+  ## are left with just team name and win pct
+  separate_wider_delim(
+    cols = "TeamName",
+    delim = " ",
+    names = c("a","b","c","Team"),
+    too_few = "align_end"
+  ) %>%
+  select(4,5) %>%
+  ## to add the year I mutated a column onto the end with 2024 for every team
+  mutate(
+    Year = c(2024,2024,2024,2024,2024,2024,2024,2024,2024,2024,2024,2024,2024,2024,2024,2024,2024,2024,2024,2024,2024,2024,2024,2024,2024,2024,2024,2024,2024,2024,2024,2024)
+  )
+
+## Now that we can do this for one year, we just need to do this for the years 2010-2019 then use bind_rows for
+## all 10 data frames to get our finished product
+
+
+
+#2010
+ESPNWINPCT2010 <- read_html(x = "https://www.espn.com/nfl/standings/_/season/2010") %>%
+  html_elements(css = "table") %>%
+  html_table()
+
+AFCWINPCT2010 <- bind_cols(ESPNWINPCT2010[[1]],ESPNWINPCT2010[[2]])
+
+NFCWINPCT2010 <- bind_cols(ESPNWINPCT2010[[3]],ESPNWINPCT2010[[4]])
+
+NFLWINPCT2010 <- bind_rows(NFCWINPCT2010,AFCWINPCT2010) %>%
+  select(1,5)%>%
+  set_names("TeamName", "WinPercentage") %>%
+  slice(2,3,4,5,7,8,9,10,12,13,14,15,17,18,19,20,22,23,24,25,27,28,29,30,32,33,34,35,37,38,39,40) %>%
+  separate_wider_delim(
+    cols = "TeamName",
+    delim = " ",
+    names = c("a","b","c","Team"),
+    too_few = "align_end"
+  ) %>%
+  select(4,5) %>%
+  mutate(
+    Year = c(2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010)
+  )
+
+#2011
+ESPNWINPCT2011 <- read_html(x = "https://www.espn.com/nfl/standings/_/season/2011") %>%
+  html_elements(css = "table") %>%
+  html_table()
+
+AFCWINPCT2011 <- bind_cols(ESPNWINPCT2011[[1]],ESPNWINPCT2011[[2]])
+
+NFCWINPCT2011 <- bind_cols(ESPNWINPCT2011[[3]],ESPNWINPCT2011[[4]])
+
+NFLWINPCT2011 <- bind_rows(NFCWINPCT2011,AFCWINPCT2011) %>%
+  select(1,5)%>%
+  set_names("TeamName", "WinPercentage") %>%
+  slice(2,3,4,5,7,8,9,10,12,13,14,15,17,18,19,20,22,23,24,25,27,28,29,30,32,33,34,35,37,38,39,40) %>%
+  separate_wider_delim(
+    cols = "TeamName",
+    delim = " ",
+    names = c("a","b","c","Team"),
+    too_few = "align_end"
+  ) %>%
+  select(4,5) %>%
+  mutate(
+    Year = c(2011,2011,2011,2011,2011,2011,2011,2011,2011,2011,2011,2011,2011,2011,2011,2011,2011,2011,2011,2011,2011,2011,2011,2011,2011,2011,2011,2011,2011,2011,2011,2011)
+  )
+
+#2012
+ESPNWINPCT2012 <- read_html(x = "https://www.espn.com/nfl/standings/_/season/2012") %>%
+  html_elements(css = "table") %>%
+  html_table()
+
+AFCWINPCT2012 <- bind_cols(ESPNWINPCT2012[[1]],ESPNWINPCT2012[[2]])
+
+NFCWINPCT2012 <- bind_cols(ESPNWINPCT2012[[3]],ESPNWINPCT2012[[4]])
+
+NFLWINPCT2012 <- bind_rows(NFCWINPCT2012,AFCWINPCT2012) %>%
+  select(1,5)%>%
+  set_names("TeamName", "WinPercentage") %>%
+  slice(2,3,4,5,7,8,9,10,12,13,14,15,17,18,19,20,22,23,24,25,27,28,29,30,32,33,34,35,37,38,39,40) %>%
+  separate_wider_delim(
+    cols = "TeamName",
+    delim = " ",
+    names = c("a","b","c","Team"),
+    too_few = "align_end"
+  ) %>%
+  select(4,5) %>%
+  mutate(
+    Year = c(2012,2012,2012,2012,2012,2012,2012,2012,2012,2012,2012,2012,2012,2012,2012,2012,2012,2012,2012,2012,2012,2012,2012,2012,2012,2012,2012,2012,2012,2012,2012,2012)
+  )
+
+#2013
+ESPNWINPCT2013 <- read_html(x = "https://www.espn.com/nfl/standings/_/season/2013") %>%
+  html_elements(css = "table") %>%
+  html_table()
+
+AFCWINPCT2013 <- bind_cols(ESPNWINPCT2013[[1]],ESPNWINPCT2013[[2]])
+
+NFCWINPCT2013 <- bind_cols(ESPNWINPCT2013[[3]],ESPNWINPCT2013[[4]])
+
+NFLWINPCT2013 <- bind_rows(NFCWINPCT2013,AFCWINPCT2013) %>%
+  select(1,5)%>%
+  set_names("TeamName", "WinPercentage") %>%
+  slice(2,3,4,5,7,8,9,10,12,13,14,15,17,18,19,20,22,23,24,25,27,28,29,30,32,33,34,35,37,38,39,40) %>%
+  separate_wider_delim(
+    cols = "TeamName",
+    delim = " ",
+    names = c("a","b","c","Team"),
+    too_few = "align_end"
+  ) %>%
+  select(4,5) %>%
+  mutate(
+    Year = c(2013,2013,2013,2013,2013,2013,2013,2013,2013,2013,2013,2013,2013,2013,2013,2013,2013,2013,2013,2013,2013,2013,2013,2013,2013,2013,2013,2013,2013,2013,2013,2013)
+  )
+
+#2014
+ESPNWINPCT2014 <- read_html(x = "https://www.espn.com/nfl/standings/_/season/2014") %>%
+  html_elements(css = "table") %>%
+  html_table()
+
+AFCWINPCT2014 <- bind_cols(ESPNWINPCT2014[[1]],ESPNWINPCT2014[[2]])
+
+NFCWINPCT2014 <- bind_cols(ESPNWINPCT2014[[3]],ESPNWINPCT2014[[4]])
+
+NFLWINPCT2014 <- bind_rows(NFCWINPCT2014,AFCWINPCT2014) %>%
+  select(1,5)%>%
+  set_names("TeamName", "WinPercentage") %>%
+  slice(2,3,4,5,7,8,9,10,12,13,14,15,17,18,19,20,22,23,24,25,27,28,29,30,32,33,34,35,37,38,39,40) %>%
+  separate_wider_delim(
+    cols = "TeamName",
+    delim = " ",
+    names = c("a","b","c","Team"),
+    too_few = "align_end"
+  ) %>%
+  select(4,5) %>%
+  mutate(
+    Year = c(2014,2014,2014,2014,2014,2014,2014,2014,2014,2014,2014,2014,2014,2014,2014,2014,2014,2014,2014,2014,2014,2014,2014,2014,2014,2014,2014,2014,2014,2014,2014,2014)
+  )
+
+#2015
+ESPNWINPCT2015 <- read_html(x = "https://www.espn.com/nfl/standings/_/season/2015") %>%
+  html_elements(css = "table") %>%
+  html_table()
+
+AFCWINPCT2015 <- bind_cols(ESPNWINPCT2015[[1]],ESPNWINPCT2015[[2]])
+
+NFCWINPCT2015 <- bind_cols(ESPNWINPCT2015[[3]],ESPNWINPCT2015[[4]])
+
+NFLWINPCT2015 <- bind_rows(NFCWINPCT2015,AFCWINPCT2015) %>%
+  select(1,5)%>%
+  set_names("TeamName", "WinPercentage") %>%
+  slice(2,3,4,5,7,8,9,10,12,13,14,15,17,18,19,20,22,23,24,25,27,28,29,30,32,33,34,35,37,38,39,40) %>%
+  separate_wider_delim(
+    cols = "TeamName",
+    delim = " ",
+    names = c("a","b","c","Team"),
+    too_few = "align_end"
+  ) %>%
+  select(4,5) %>%
+  mutate(
+    Year = c(2015,2015,2015,2015,2015,2015,2015,2015,2015,2015,2015,2015,2015,2015,2015,2015,2015,2015,2015,2015,2015,2015,2015,2015,2015,2015,2015,2015,2015,2015,2015,2015)
+  )
+
+#2016
+ESPNWINPCT2016 <- read_html(x = "https://www.espn.com/nfl/standings/_/season/2016") %>%
+  html_elements(css = "table") %>%
+  html_table()
+
+AFCWINPCT2016 <- bind_cols(ESPNWINPCT2016[[1]],ESPNWINPCT2016[[2]])
+
+NFCWINPCT2016 <- bind_cols(ESPNWINPCT2016[[3]],ESPNWINPCT2016[[4]])
+
+NFLWINPCT2016 <- bind_rows(NFCWINPCT2016,AFCWINPCT2016) %>%
+  select(1,5)%>%
+  set_names("TeamName", "WinPercentage") %>%
+  slice(2,3,4,5,7,8,9,10,12,13,14,15,17,18,19,20,22,23,24,25,27,28,29,30,32,33,34,35,37,38,39,40) %>%
+  separate_wider_delim(
+    cols = "TeamName",
+    delim = " ",
+    names = c("a","b","c","Team"),
+    too_few = "align_end"
+  ) %>%
+  select(4,5) %>%
+  mutate(
+    Year = c(2016,2016,2016,2016,2016,2016,2016,2016,2016,2016,2016,2016,2016,2016,2016,2016,2016,2016,2016,2016,2016,2016,2016,2016,2016,2016,2016,2016,2016,2016,2016,2016)
+  )
+
+#2017
+ESPNWINPCT2017 <- read_html(x = "https://www.espn.com/nfl/standings/_/season/2017") %>%
+  html_elements(css = "table") %>%
+  html_table()
+
+AFCWINPCT2017 <- bind_cols(ESPNWINPCT2017[[1]],ESPNWINPCT2017[[2]])
+
+NFCWINPCT2017 <- bind_cols(ESPNWINPCT2017[[3]],ESPNWINPCT2017[[4]])
+
+NFLWINPCT2017 <- bind_rows(NFCWINPCT2017,AFCWINPCT2017) %>%
+  select(1,5)%>%
+  set_names("TeamName", "WinPercentage") %>%
+  slice(2,3,4,5,7,8,9,10,12,13,14,15,17,18,19,20,22,23,24,25,27,28,29,30,32,33,34,35,37,38,39,40) %>%
+  separate_wider_delim(
+    cols = "TeamName",
+    delim = " ",
+    names = c("a","b","c","Team"),
+    too_few = "align_end"
+  ) %>%
+  select(4,5) %>%
+  mutate(
+    Year = c(2017,2017,2017,2017,2017,2017,2017,2017,2017,2017,2017,2017,2017,2017,2017,2017,2017,2017,2017,2017,2017,2017,2017,2017,2017,2017,2017,2017,2017,2017,2017,2017)
+  )
+
+#2018
+ESPNWINPCT2018 <- read_html(x = "https://www.espn.com/nfl/standings/_/season/2018") %>%
+  html_elements(css = "table") %>%
+  html_table()
+
+AFCWINPCT2018 <- bind_cols(ESPNWINPCT2018[[1]],ESPNWINPCT2018[[2]])
+
+NFCWINPCT2018 <- bind_cols(ESPNWINPCT2018[[3]],ESPNWINPCT2018[[4]])
+
+NFLWINPCT2018 <- bind_rows(NFCWINPCT2018,AFCWINPCT2018) %>%
+  select(1,5)%>%
+  set_names("TeamName", "WinPercentage") %>%
+  slice(2,3,4,5,7,8,9,10,12,13,14,15,17,18,19,20,22,23,24,25,27,28,29,30,32,33,34,35,37,38,39,40) %>%
+  separate_wider_delim(
+    cols = "TeamName",
+    delim = " ",
+    names = c("a","b","c","Team"),
+    too_few = "align_end"
+  ) %>%
+  select(4,5) %>%
+  mutate(
+    Year = c(2018,2018,2018,2018,2018,2018,2018,2018,2018,2018,2018,2018,2018,2018,2018,2018,2018,2018,2018,2018,2018,2018,2018,2018,2018,2018,2018,2018,2018,2018,2018,2018)
+  )
+
+#2019
+ESPNWINPCT2019 <- read_html(x = "https://www.espn.com/nfl/standings/_/season/2019") %>%
+  html_elements(css = "table") %>%
+  html_table()
+
+AFCWINPCT2019 <- bind_cols(ESPNWINPCT2019[[1]],ESPNWINPCT2019[[2]])
+
+NFCWINPCT2019 <- bind_cols(ESPNWINPCT2019[[3]],ESPNWINPCT2019[[4]])
+
+NFLWINPCT2019 <- bind_rows(NFCWINPCT2019,AFCWINPCT2019) %>%
+  select(1,5)%>%
+  set_names("TeamName", "WinPercentage") %>%
+  slice(2,3,4,5,7,8,9,10,12,13,14,15,17,18,19,20,22,23,24,25,27,28,29,30,32,33,34,35,37,38,39,40) %>%
+  separate_wider_delim(
+    cols = "TeamName",
+    delim = " ",
+    names = c("a","b","c","Team"),
+    too_few = "align_end"
+  ) %>%
+  select(4,5) %>%
+  mutate(
+    Year = c(2019,2019,2019,2019,2019,2019,2019,2019,2019,2019,2019,2019,2019,2019,2019,2019,2019,2019,2019,2019,2019,2019,2019,2019,2019,2019,2019,2019,2019,2019,2019,2019)
+  )
+
+## adds all the different years data together to make a final dataset
+NFLWINPCTFINAL <- bind_rows(NFLWINPCT2010,NFLWINPCT2011,NFLWINPCT2012,NFLWINPCT2013,NFLWINPCT2014,NFLWINPCT2015,NFLWINPCT2016,NFLWINPCT2017,NFLWINPCT2018,NFLWINPCT2019)
+
 
 #Step 5) 
 #Read in URLs: https://www.espn.com/nfl/attendance/_/year/2010
