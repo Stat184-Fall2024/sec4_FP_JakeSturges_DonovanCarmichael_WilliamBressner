@@ -479,6 +479,11 @@ yearly_Stadium_Data <- bind_rows(
   set_names("Team","Attendance","Year")%>%
   slice(-c(unneeded_rows_1)) %>% #Removes rows that aren't teams
   slice(-c(unneeded_rows_2)) #Removes rows that aren't teams
+#LA rows have same name, using source data, identify chargers rows
+chargers_rows <- c(21,(1*32+19),(2*32+28),(3*32+22),(4*32+21),
+                   (5*32+19),(6*32+7),(7*32+26),(8*32+10),(9*32+11))
+#Rename the chargers rows from LA to Chargers in the team col
+yearly_Stadium_Data[chargers_rows, 1] <- "Chargers" 
 
 
   
