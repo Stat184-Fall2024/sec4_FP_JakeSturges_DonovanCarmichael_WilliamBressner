@@ -74,8 +74,7 @@ NFL_Yearly_Populations <- US_Populations %>%
   arrange(City) #Rearrange the data so it's alphabetical
 
 
-#Step 4) JAKE's got it
-
+#Step 4) 
 library(rvest)
 library(tidyr)
 library(tidyverse)
