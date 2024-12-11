@@ -474,7 +474,10 @@ yearly_Stadium_Data <- bind_rows(
   stadium_2014,stadium_2015,stadium_2016,stadium_2017,
   stadium_2018,stadium_2019) %>%
   select(c(2,5,12)) %>%
-  set_names("Team","Attendance","Year")
+  set_names("Team","Attendance","Year")%>%
+  slice(-c(unneeded_rows_1)) %>% #Removes rows that aren't teams
+  slice(-c(unneeded_rows_2)) #Removes rows that aren't teams
+
 
   
 
