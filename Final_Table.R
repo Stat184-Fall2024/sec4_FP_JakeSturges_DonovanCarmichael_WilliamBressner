@@ -8,12 +8,15 @@
 # a] Duplicate certain city results for the cities with multiple teams
 # b] Add/edit Team column so that it corresponds correctly with each city:
 #.       NY - Giants/Jets, LA - Rams/Chargers
+# c] Rename teams and cities of all tables so all have team name
 # Step 3) Create Attendance/Win PCT table
-# a] bind cols
-# b] match cases correctly
+# a] join_by year and team
+# Step 4) make the final table by adding the population in
+# a] join_by year and team
 # Step 4) Clean and Tidy any unforeseen loose ends
+# a] Make sure all datatypes match and are usable
+# b] Check for correct number of rows after joining
 
-#Step 1 - Uses collected and organized data from other file for new files
 #Arrange Win% data by alphabetically by team 
 Win_PCT <- NFLWINPCTFINAL %>%
   arrange(Team)
