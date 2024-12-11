@@ -469,7 +469,7 @@ stadium_2019 <- stadiumRaw_2019[[1]] %>%
   )
 
 unneeded_rows_1 <- seq(from = 1, to = 340, by = 34) #Sequence of unneeded rows
-unneeded_rows_2 <- seq(from = 1, to = 330, by = 34) #Rest of unneeded rows
+unneeded_rows_2 <- seq(from = 1, to = 330, by = 33) #Rest of unneeded rows
 #Join the yearly data into one data frame then tidy 
 yearly_Stadium_Data <- bind_rows(
   stadium_2010,stadium_2011,stadium_2012,stadium_2013,
