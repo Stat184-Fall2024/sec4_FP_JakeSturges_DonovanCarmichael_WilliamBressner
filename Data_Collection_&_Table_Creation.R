@@ -43,22 +43,22 @@ US_Populations <- read_excel("US_City_Populations.xlsx") %>%
             "2016","2017","2018","2019")%>% #Rname cols 
   #Select only the cities with NFL teams using filter 
   filter(City %in% c("Phoenix city, Arizona", "Atlanta city, Georgia", 
-         "Baltimore city, Maryland", "Buffalo city, New York", 
-         "Charlotte city, North Carolina", "Chicago city, Illinois", 
-         "Cincinnati city, Ohio", "Cleveland city, Ohio", 
-         "Dallas city, Texas", "Denver city, Colorado", 
-         "Detroit city, Michigan", "Green Bay city, Wisconsin", 
-         "Houston city, Texas", "Indianapolis city (balance), Indiana", 
-         "Jacksonville city, Florida", "Kansas City city, Missouri", 
-         "Las Vegas city, Nevada", "Los Angeles city, California", 
-         "Miami city, Florida", "Minneapolis city, Minnesota", 
-         "Nashville-Davidson metropolitan government (balance), Tennessee", 
-         "New Orleans city, Louisiana", "New York city, New York", 
-         "Philadelphia city, Pennsylvania", 
-         "Pittsburgh city, Pennsylvania", "San Francisco city, California",
-         "Seattle city, Washington", "Tampa city, Florida", 
-         "Washington city, District of Columbia", 
-         "Boston city, Massachusetts"))
+                     "Baltimore city, Maryland", "Buffalo city, New York", 
+                     "Charlotte city, North Carolina", "Chicago city, Illinois", 
+                     "Cincinnati city, Ohio", "Cleveland city, Ohio", 
+                     "Dallas city, Texas", "Denver city, Colorado", 
+                     "Detroit city, Michigan", "Green Bay city, Wisconsin", 
+                     "Houston city, Texas", "Indianapolis city (balance), Indiana", 
+                     "Jacksonville city, Florida", "Kansas City city, Missouri", 
+                     "Las Vegas city, Nevada", "Los Angeles city, California", 
+                     "Miami city, Florida", "Minneapolis city, Minnesota", 
+                     "Nashville-Davidson metropolitan government (balance), Tennessee", 
+                     "New Orleans city, Louisiana", "New York city, New York", 
+                     "Philadelphia city, Pennsylvania", 
+                     "Pittsburgh city, Pennsylvania", "San Francisco city, California",
+                     "Seattle city, Washington", "Tampa city, Florida", 
+                     "Washington city, District of Columbia", 
+                     "Boston city, Massachusetts"))
 
 #Cast all the 2010 values to numbers since for some reason they weren't
 US_Populations$"2010" <- as.numeric(as.character(US_Populations$"2010"))
@@ -75,10 +75,6 @@ NFL_Yearly_Populations <- US_Populations %>%
 
 
 #Step 4) 
-library(rvest)
-library(tidyr)
-library(tidyverse)
-
 ## the goal of this piece of code is to harvest data from espn and put together a table with each case being
 ## a team in a given year from the timespan of 2010-2019 and the variable being win percentage.
 
@@ -143,6 +139,12 @@ NFLWINPCT2010 <- bind_rows(NFCWINPCT2010,AFCWINPCT2010) %>%
   select(4,5) %>%
   mutate(
     Year = c(2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010,2010)
+  )%>% mutate( #Change Washington team name for consistency and CARE principles
+    Team = case_match(
+      .x = Team,
+      "Redskins" ~ "Commanders",
+      .default = Team
+    )
   )
 
 #2011
@@ -167,6 +169,12 @@ NFLWINPCT2011 <- bind_rows(NFCWINPCT2011,AFCWINPCT2011) %>%
   select(4,5) %>%
   mutate(
     Year = c(2011,2011,2011,2011,2011,2011,2011,2011,2011,2011,2011,2011,2011,2011,2011,2011,2011,2011,2011,2011,2011,2011,2011,2011,2011,2011,2011,2011,2011,2011,2011,2011)
+  )%>% mutate( #Change Washington team name for consistency and CARE principles
+    Team = case_match(
+      .x = Team,
+      "Redskins" ~ "Commanders",
+      .default = Team
+    )
   )
 
 #2012
@@ -191,6 +199,12 @@ NFLWINPCT2012 <- bind_rows(NFCWINPCT2012,AFCWINPCT2012) %>%
   select(4,5) %>%
   mutate(
     Year = c(2012,2012,2012,2012,2012,2012,2012,2012,2012,2012,2012,2012,2012,2012,2012,2012,2012,2012,2012,2012,2012,2012,2012,2012,2012,2012,2012,2012,2012,2012,2012,2012)
+  )%>% mutate( #Change Washington team name for consistency and CARE principles
+    Team = case_match(
+      .x = Team,
+      "Redskins" ~ "Commanders",
+      .default = Team
+    )
   )
 
 #2013
@@ -215,6 +229,12 @@ NFLWINPCT2013 <- bind_rows(NFCWINPCT2013,AFCWINPCT2013) %>%
   select(4,5) %>%
   mutate(
     Year = c(2013,2013,2013,2013,2013,2013,2013,2013,2013,2013,2013,2013,2013,2013,2013,2013,2013,2013,2013,2013,2013,2013,2013,2013,2013,2013,2013,2013,2013,2013,2013,2013)
+  )%>% mutate( #Change Washington team name for consistency and CARE principles
+    Team = case_match(
+      .x = Team,
+      "Redskins" ~ "Commanders",
+      .default = Team
+    )
   )
 
 #2014
@@ -239,6 +259,12 @@ NFLWINPCT2014 <- bind_rows(NFCWINPCT2014,AFCWINPCT2014) %>%
   select(4,5) %>%
   mutate(
     Year = c(2014,2014,2014,2014,2014,2014,2014,2014,2014,2014,2014,2014,2014,2014,2014,2014,2014,2014,2014,2014,2014,2014,2014,2014,2014,2014,2014,2014,2014,2014,2014,2014)
+  )%>% mutate( #Change Washington team name for consistency and CARE principles
+    Team = case_match(
+      .x = Team,
+      "Redskins" ~ "Commanders",
+      .default = Team
+    )
   )
 
 #2015
@@ -263,6 +289,12 @@ NFLWINPCT2015 <- bind_rows(NFCWINPCT2015,AFCWINPCT2015) %>%
   select(4,5) %>%
   mutate(
     Year = c(2015,2015,2015,2015,2015,2015,2015,2015,2015,2015,2015,2015,2015,2015,2015,2015,2015,2015,2015,2015,2015,2015,2015,2015,2015,2015,2015,2015,2015,2015,2015,2015)
+  )%>% mutate( #Change Washington team name for consistency and CARE principles
+    Team = case_match(
+      .x = Team,
+      "Redskins" ~ "Commanders",
+      .default = Team
+    )
   )
 
 #2016
@@ -287,6 +319,12 @@ NFLWINPCT2016 <- bind_rows(NFCWINPCT2016,AFCWINPCT2016) %>%
   select(4,5) %>%
   mutate(
     Year = c(2016,2016,2016,2016,2016,2016,2016,2016,2016,2016,2016,2016,2016,2016,2016,2016,2016,2016,2016,2016,2016,2016,2016,2016,2016,2016,2016,2016,2016,2016,2016,2016)
+  )%>% mutate( #Change Washington team name for consistency and CARE principles
+    Team = case_match(
+      .x = Team,
+      "Redskins" ~ "Commanders",
+      .default = Team
+    )
   )
 
 #2017
@@ -311,6 +349,12 @@ NFLWINPCT2017 <- bind_rows(NFCWINPCT2017,AFCWINPCT2017) %>%
   select(4,5) %>%
   mutate(
     Year = c(2017,2017,2017,2017,2017,2017,2017,2017,2017,2017,2017,2017,2017,2017,2017,2017,2017,2017,2017,2017,2017,2017,2017,2017,2017,2017,2017,2017,2017,2017,2017,2017)
+  )%>% mutate( #Change Washington team name for consistency and CARE principles
+    Team = case_match(
+      .x = Team,
+      "Redskins" ~ "Commanders",
+      .default = Team
+    )
   )
 
 #2018
@@ -335,6 +379,12 @@ NFLWINPCT2018 <- bind_rows(NFCWINPCT2018,AFCWINPCT2018) %>%
   select(4,5) %>%
   mutate(
     Year = c(2018,2018,2018,2018,2018,2018,2018,2018,2018,2018,2018,2018,2018,2018,2018,2018,2018,2018,2018,2018,2018,2018,2018,2018,2018,2018,2018,2018,2018,2018,2018,2018)
+  )%>% mutate( #Change Washington team name for consistency and CARE principles
+    Team = case_match(
+      .x = Team,
+      "Redskins" ~ "Commanders",
+      .default = Team
+    )
   )
 
 #2019
@@ -359,10 +409,20 @@ NFLWINPCT2019 <- bind_rows(NFCWINPCT2019,AFCWINPCT2019) %>%
   select(4,5) %>%
   mutate(
     Year = c(2019,2019,2019,2019,2019,2019,2019,2019,2019,2019,2019,2019,2019,2019,2019,2019,2019,2019,2019,2019,2019,2019,2019,2019,2019,2019,2019,2019,2019,2019,2019,2019)
+  ) %>% mutate( #Change Washington team name for consistency and CARE principles
+    Team = case_match(
+      .x = Team,
+      "WSHWashington" ~ "Commanders",
+      .default = Team
+    )
   )
 
 ## adds all the different years data together to make a final dataset
-NFLWINPCTFINAL <- bind_rows(NFLWINPCT2010,NFLWINPCT2011,NFLWINPCT2012,NFLWINPCT2013,NFLWINPCT2014,NFLWINPCT2015,NFLWINPCT2016,NFLWINPCT2017,NFLWINPCT2018,NFLWINPCT2019)
+NFLWINPCTFINAL <- bind_rows(NFLWINPCT2010,NFLWINPCT2011,
+                            NFLWINPCT2012,NFLWINPCT2013,
+                            NFLWINPCT2014,NFLWINPCT2015,
+                            NFLWINPCT2016,NFLWINPCT2017,
+                            NFLWINPCT2018,NFLWINPCT2019) 
 
 
 #Step 5) 
@@ -386,6 +446,7 @@ stadium_2010 <- stadiumRaw_2010[[1]] %>%
   mutate(
     Year = c(2010) #Add year column for 2010
   )
+
 #Gather 2011 Stadium data from espn
 stadiumRaw_2011 <- read_html("https://www.espn.com/nfl/attendance/_/year/2011") %>%
   html_elements(css = "table") %>%
@@ -394,7 +455,7 @@ stadiumRaw_2011 <- read_html("https://www.espn.com/nfl/attendance/_/year/2011") 
 stadium_2011 <- stadiumRaw_2011[[1]] %>%
   mutate(
     Year = c(2011) #Add year column for 2011
-  )
+  ) 
 #Gather 2012 Stadium data from espn
 stadiumRaw_2012 <- read_html("https://www.espn.com/nfl/attendance/_/year/2012") %>%
   html_elements(css = "table") %>%
@@ -469,7 +530,7 @@ stadium_2019 <- stadiumRaw_2019[[1]] %>%
   )
 
 unneeded_rows_1 <- seq(from = 1, to = 340, by = 34) #Sequence of unneeded rows
-unneeded_rows_2 <- seq(from = 1, to = 330, by = 33) #Rest of unneeded rows
+unneeded_rows_2 <- seq(from = 1, to = 330, by = 33) #Rest of rows
 #Join the yearly data into one data frame then tidy 
 yearly_Stadium_Data <- bind_rows(
   stadium_2010,stadium_2011,stadium_2012,stadium_2013,
@@ -482,15 +543,6 @@ yearly_Stadium_Data <- bind_rows(
 #LA rows have same name, using source data, identify chargers rows
 chargers_rows <- c(21,(1*32+19),(2*32+28),(3*32+22),(4*32+21),
                    (5*32+19),(6*32+7),(7*32+26),(8*32+10),(9*32+11))
-#Rename the chargers rows from LA to Chargers in the team col
+#Rename the chargers rows from LA to Chargers
 yearly_Stadium_Data[chargers_rows, 1] <- "Chargers" 
-
-
   
-
-  
-  
-
-
-
-
