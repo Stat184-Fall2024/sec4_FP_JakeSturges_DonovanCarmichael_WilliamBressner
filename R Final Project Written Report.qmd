@@ -1,7 +1,6 @@
 ---
 title: "R Final Project Written Report"
 author: "Jake Sturges, William Bressner, Donovan Carmichael"
-format: pdf
 format: 
   pdf: 
     toc: false
