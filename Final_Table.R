@@ -24,12 +24,13 @@ Win_PCT <- NFLWINPCTFINAL %>%
 Win_PCT$WinPercentage <- as.numeric((Win_PCT$WinPercentage))
 
 #used for duplicating city data with two teams associated to it
-duplicates <- c(1,1,1,1,1,1,1,1,1,1) 
+NY_duplicates <- c(1,1,1,1,1,1,1,1,1,1) 
+LA_duplicates <- c(1,1,1)
 #Copy alphabetized city data
 City_Populations <- NFL_Yearly_Populations 
 #Duplicate cities with 2 teams (LA & NY)
 #Id the rows you want to dup, and how many dups
-LA_duplications <- rep(171:180, duplicates) #Los angeles rows x2
+LA_duplications <- rep(172:174, LA_duplicates) #Los angeles rows x2
 LA_Population_dup <- City_Populations[LA_duplications,]%>%#Dup rows in new set
   mutate(#Rename this duplicate data to make it unique to same city data
     City = case_match(
@@ -38,7 +39,7 @@ LA_Population_dup <- City_Populations[LA_duplications,]%>%#Dup rows in new set
       .default = "Chargers"
     )
   )
-NY_duplications <- rep(221:230, duplicates) #New york rows x2
+NY_duplications <- rep(221:230, NY_duplicates) #New york rows x2
 NY_Population_dup <- City_Populations[NY_duplications,] %>%
   mutate(#Rename this duplicate data to make it unique to same city data
     City = case_match(
@@ -85,6 +86,8 @@ Team_Populations <- bind_rows(#Combine data
     "Tampa city, Florida" ~ "Buccaneers",
     "Nashville-Davidson metropolitan government (balance), Tennessee" ~ "Titans",
     "Washington city, District of Columbia" ~ "Commanders",
+    "St. Louis city, Missouri" ~ "Rams", 
+    "San Diego city, California" ~ "Chargers",
     .default = "missing"
   )
 )%>% set_names(
@@ -93,7 +96,7 @@ Team_Populations <- bind_rows(#Combine data
   "Population"
 )%>% arrange(Team)
 #Change year type to make it compatable for joining, set it to number
-Team_Populations$Year <- as.numeric((Team_Populations$Year)) 
+ 
 
 #Create the stadium data to have the names of each team the way the Win% does
 Stadium_Data <- yearly_Stadium_Data%>%
@@ -162,6 +165,7 @@ Final_Table <- full_join(
   x = Attendance_Win_PCT_Table,
   y = Team_Populations,
   by = join_by(Year == Year, Team == Team) #Match cases of year and team
-)
+) %>% arrange(Year)%>%
+  arrange(Team)
 
 head(Final_Table)
