@@ -58,7 +58,11 @@ US_Populations <- read_excel("US_City_Populations.xlsx") %>%
                      "Pittsburgh city, Pennsylvania", "San Francisco city, California",
                      "Seattle city, Washington", "Tampa city, Florida", 
                      "Washington city, District of Columbia", 
-                     "Boston city, Massachusetts"))
+                     "Boston city, Massachusetts", 
+                     "St. Louis city, Missouri", 
+                     "San Diego city, California"))
+#Must have St. Louis and San Diego because stadiums moved 2016 and 2017 
+#respectively for rams and chargers
 
 #Cast all the 2010 values to numbers since for some reason they weren't
 US_Populations$"2010" <- as.numeric(as.character(US_Populations$"2010"))
@@ -70,8 +74,16 @@ NFL_Yearly_Populations <- US_Populations %>%
     cols = starts_with("20"), #Make every yearly column into one column of years
     names_to = "Year", #All years in the year column
     values_to = "Population" #All yearly populations in this column
-  ) %>%
-  arrange(City) #Rearrange the data so it's alphabetical
+  ) %>% 
+  arrange(City)
+NFL_Yearly_Populations$Year <- as.numeric((NFL_Yearly_Populations$Year)) #Make year a number
+NFL_Yearly_Populations <- NFL_Yearly_Populations%>%
+  #remove cases of San Diego after the Chargers moved
+  filter(!(City == "San Diego city, California" & Year > 2016))%>%
+  #remove cases of San Diego after the Chargers moved
+  filter(!(City == "St. Louis city, Missouri" & Year > 2015)) %>%
+  #remove cases of LA before a team was there
+  filter(!(City == "Los Angeles city, California" & Year < 2016)) #Rearrange the data so it's alphabetical
 
 
 #Step 4) 
@@ -546,3 +558,8 @@ chargers_rows <- c(21,(1*32+19),(2*32+28),(3*32+22),(4*32+21),
 #Rename the chargers rows from LA to Chargers
 yearly_Stadium_Data[chargers_rows, 1] <- "Chargers" 
   
+
+
+
+
+
