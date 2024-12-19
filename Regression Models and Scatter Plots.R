@@ -14,11 +14,11 @@ ggplot(data = Final_Table,
     x = "Population(Millions)", # sets labels for the graph
     y = "Win Percentage",
     title = "Population vs Win Percentage"
-  )
+  ) 
 
 
 PopulationRegModel <- lm(WinPercentage~Population, data = Final_Table) # sets regression model for population vs winpercentage
-summary(PopulationRegModel) # creates summary statistics for the above regression model
+PopSummary <- summary(PopulationRegModel) # creates summary statistics for the above regression model
 
 
 ggplot(data = Final_Table, 
@@ -31,8 +31,20 @@ ggplot(data = Final_Table,
     x = "Attendance",   # sets labels for the graph
     y = "Win Percentage",
     title = "Attendance vs Win Percentage"
-  )
+  ) 
 
 
 StadiumAttendanceRegModel <- lm(WinPercentage~Attendance, data = Final_Table) # sets regression model for population vs winpercentage
-summary(StadiumAttendanceRegModel) # creates summary statistics for the above regression model
+AttendanceSummary <- summary(StadiumAttendanceRegModel) # creates summary statistics for the above regression model
+
+
+
+#next I want to create a table showing summary statistics for the NFL final data
+
+library(kableExtra)
+library(dplyr)
+library(htmltools)
+Summary_Table <- PopSummary$coefficients %>% 
+ kable() %>%
+  kable_classic()
+
