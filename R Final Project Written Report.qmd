@@ -18,8 +18,29 @@ execute:
   echo: false
   warning: false
 ---
+The Relationship Between Stadium Attendance and City Population In Relation to Winning Percentage of NFL Teams (2010-2019)
 
-Analysis/Results
+Literature Review
+
+The success of a National Football League (NFL) team is influenced by a variety of factors, including team performance, market size, fan support, and financial resources. Among these, stadium attendance and city population are frequently cited as significant contributors towards a team’s success. This literature review explores the relationship between stadium attendance, city population, and the success of NFL teams between 2010 and 2019. 
+
+Overall, a team in a big city is more likely to be successful than one in a small city. However, this trend does not always hold true, and there are notable exceptions where teams in smaller cities can outperform competitors located in larger cities. For example, the Pittsburgh Steelers have the most titles and are in the bottom half of NFL city populations. Similarly, the Green Bay Packers play in the smallest city of any professional sports team, yet are still considered one of the most successful NFL franchises.
+
+When analyzing the relationship between stadium attendance and NFL win percentage, the more a team wins, the more people will show up to the game to watch, and if a team is winning less, less people will want to go to the game. An increased fan turnout contributes to higher attendance rates, which in turn generate more revenue for the team. This revenue, whether from ticket sales, merchandise, or concessions, enhances the financial resources available to the franchise, providing them with the ability to invest in better players, improved facilities, and more advanced training programs, all of which contribute to better success. On the other hand, teams that are losing regularly face the opposite effect, with declining attendance leading to reduced revenue that can make it harder for them to improve their roster and win more.
+
+There are some confounding variables that could influence the data. One possible confounding variable is home field advantage, while another is team management.
+
+In summary, smaller cities with adequate attendance have proven that size does not always correlate with performance. Future research could explore the relationship between these variables in greater depth.
+
+Methodology
+
+To investigate whether there is a correlation between stadium attendance and win percentage, we will use data collected from ESPN and US Census. We are analyzing our data to explore our research questions, “Between the years 2010 and 2019, is there a relationship between city population and regular season record in the NFL?” and “In the NFL, is there a relationship between the average stadium attendance per game and the regular season record between the years 2010 and 2019?” In order to analyze our data and answer these questions, we will find descriptive statistics, perform a t-test, and create data visualizations. Our two explanatory variables in this study will be stadium attendance and city population while our response variable will be a team's season winning percentage.                                   
+
+FARE and CARE Principles
+
+The data we collected is pretty findable, as the data we analyzed from the ESPN website was easily accessible. The data is found in an appropriate repository. The meta data does a fairly good job of using language that we can understand and information we can gain for our data analysis. The data provides data usage licenses and sources on the websites. 
+
+The data ecosystems function in ways that do not harm Indigenous Peoples. The data clearly respects Indigenous people and their rights. The data clearly outlines the inclusion and support of indigenous people. The data includes the NFL Team’s name change from the Redskins to the Washington Commanders in 2022. The US Census data from 2010 to 2019 abides by the CARE Principles developed by the Global Indigenous Data Alliance.
 
 To explore our research questions we first must define our null hypothesis. For both questions we are assuming that there is no correlation between attendance and win percentage or population and win percentage, therefore our null hypothesis follows:
 
@@ -38,3 +59,16 @@ For attendance vs win percentage we created the following scatter plot:
 For the above graph we can see a much more visible correlation compared to the population graph. The regression line for stadium attendance vs win percentage(above red line) has a positive slope confirming our original belief that attendance would be correlated with win percentage. The 3 points below 40,000 attendance are the 3 years after the rams moved from St. Louis to Los Angeles and these points decrease the slope of the regression line since they are influential points(extreme in both the x and y direction).
 
 Above is the regression summary statistics for the attendance vs win percentage data. With a p-value of 0.0228683 less than 0.05 we can say that the slope of the regression line is greater than 0 at the 5% significance level and attendance is a significant predictor of win percentage. The attendance slope of 0.000028 can be interpreted as for every increase of a person in attendance per game, there is a 0.000028% increase in a teams predicted win percentage.
+
+Works Cited
+
+Bureau, U. C. (2022, February 16). City and town population totals: 2010-2019. Census.gov. https://www.census.gov/data/tables/time-series/demo/popest/2010s-total-cities-and-towns.html
+
+ESPN Internet Ventures. (n.d.-a). ESPN. https://www.espn.com/nfl/attendance 
+
+ESPN Internet Ventures. (n.d.). NFL standings - 2024 season. ESPN. https://www.espn.com/nfl/standings 
+
+Oravec, T. (2024, April 25). How does state/city population affect sports teams success?. ArcGIS StoryMaps. https://storymaps.arcgis.com/stories/71b6dfbc606047f69fe60fab8b591091 
+
+Yahoo! (n.d.). Farewell to NFL home-field advantage, as home teams have a losing record through 5 weeks. Yahoo! Sports. https://sports.yahoo.com/farewell-to-nfl-home-field-advantage-as-home-teams-have-a-losing-record-through-5-weeks-153759757.html 
+Analysis/Results
