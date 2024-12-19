@@ -8,7 +8,7 @@
 # 3) Create basic plots to show potential correlation between the data
 ## a) Win Pct vs. Population ()
 ## b) Attendance vs. Win Pct ()
-## c) Population vs. Attendance () Checking potential covariance in data
+## c) Population vs. Attendance () Will not statistically prove, but maybe useful
 
 # Step 1) Load Packages
 library(ggplot2)
@@ -35,8 +35,8 @@ ggplot(
 ggplot( 
   data = Final_Table,
          mapping = aes(
-           x = Attendance)) +
-  geom_histogram(binwidth = 5000, 
+           x = Attendance)) + #Graphing average season attendance 
+  geom_histogram(binwidth = 2500, #Bars measure segments of 2500
                  fill = "green", 
                  color = "black", 
                  alpha = 0.7)+
@@ -59,3 +59,8 @@ ggplot(
        x = "City Population",
        y = "Frequency") +
   theme_bw()
+
+# Step 3) Discovering potential correlation
+
+
+
