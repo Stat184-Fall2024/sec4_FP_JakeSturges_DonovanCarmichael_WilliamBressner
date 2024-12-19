@@ -1,3 +1,11 @@
+---
+title: "Summary Table"
+author: "James Sturges"
+date: "2024-12-19"
+output: html_document
+---
+
+```{r echo=TRUE}
 library(kableExtra)
 library(dplyr)
 library(htmltools)
@@ -6,7 +14,7 @@ Summary_Table_Population <- PopSummary$coefficients %>%
    col.names = c("Estimate", "Standard Error", "t-Value", "P-Value")
  ) %>%
   kable_classic()
-Summary_Table
+Summary_Table_Population
 ```
 
 ```{r echo=TRUE}
@@ -15,5 +23,5 @@ Summary_Table_Attendance <- AttendanceSummary$coefficients %>%
    col.names = c("Estimate", "Standard Error", "t-Value", "P-Value")
  ) %>%
   kable_classic()
-Summary_Table
+Summary_Table_Attendance
 ```
