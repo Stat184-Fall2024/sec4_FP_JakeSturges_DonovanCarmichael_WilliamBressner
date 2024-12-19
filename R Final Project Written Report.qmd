@@ -42,6 +42,8 @@ The data we collected is pretty findable, as the data we analyzed from the ESPN 
 
 The data ecosystems function in ways that do not harm Indigenous Peoples. The data clearly respects Indigenous people and their rights. The data clearly outlines the inclusion and support of indigenous people. The data includes the NFL Team’s name change from the Redskins to the Washington Commanders in 2022. The US Census data from 2010 to 2019 abides by the CARE Principles developed by the Global Indigenous Data Alliance.
 
+Analysis
+
 To explore our research questions we first must define our null hypothesis. For both questions we are assuming that there is no correlation between attendance and win percentage or population and win percentage, therefore our null hypothesis follows:
 
 $$ H_0: \beta_1 = 0 \quad \text{vs.} \quad H_1: \beta_1 \neq 0 $$
@@ -52,13 +54,17 @@ For population vs win percentage we created the following scatter plot:
 
 We chose to make each team a different color to show how each teams city population remained relatively similar in each year from 2010-2019. The line of best fit(in red) has a negative slope which is contrary to what we originally thought the data would show. One thing we would like to point out is the New York teams(in blue on the right side of the above graph) are high leverage points and influence the regression line more than the rest of the data, this is a leading cause for the negative regression line since the New York teams had a below average winning percentage from 2010-2019.
 
-Above is our regression summary statistics for the population vs win percentage data. With a p-value of 0.0543222 greater than our required alpha level of 0.05, we cannot say that the slope of the regression line differs from 0 and it is not a significant predictor of win percentage.
+Above is our regression summary statistics for the population vs win percentage data. With a p-value of 0.0543222 greater than our required alpha level of 0.05, we cannot say that the slope of the regression line differs from 0 and it is not a significant predictor of win percentage. Since we fail to reject our null hypothesis, we cannot however say that the slope of city population vs win percentage is 0, only that we can't say it is different from 0 with certainty.
 
 For attendance vs win percentage we created the following scatter plot:
 
 For the above graph we can see a much more visible correlation compared to the population graph. The regression line for stadium attendance vs win percentage(above red line) has a positive slope confirming our original belief that attendance would be correlated with win percentage. The 3 points below 40,000 attendance are the 3 years after the rams moved from St. Louis to Los Angeles and these points decrease the slope of the regression line since they are influential points(extreme in both the x and y direction).
 
 Above is the regression summary statistics for the attendance vs win percentage data. With a p-value of 0.0228683 less than 0.05 we can say that the slope of the regression line is greater than 0 at the 5% significance level and attendance is a significant predictor of win percentage. The attendance slope of 0.000028 can be interpreted as for every increase of a person in attendance per game, there is a 0.000028% increase in a teams predicted win percentage.
+
+Conclusion
+
+In conclusion, stadium attendance is a significant predictor of win percentage with a positive slope, meaning that the higher a teams stadium attendance is, the higher their predicted end of season win percentage is. For our other research question, we found that city population is not a significant predictor of win percentage and we cannot reject the null that the slope of city population vs win percentage is 0.
 
 Works Cited
 
