@@ -1,0 +1,19 @@
+library(kableExtra)
+library(dplyr)
+library(htmltools)
+Summary_Table_Population <- PopSummary$coefficients %>% 
+ kable(
+   col.names = c("Estimate", "Standard Error", "t-Value", "P-Value")
+ ) %>%
+  kable_classic()
+Summary_Table
+```
+
+```{r echo=TRUE}
+Summary_Table_Attendance <- AttendanceSummary$coefficients %>% 
+ kable(
+   col.names = c("Estimate", "Standard Error", "t-Value", "P-Value")
+ ) %>%
+  kable_classic()
+Summary_Table
+```
